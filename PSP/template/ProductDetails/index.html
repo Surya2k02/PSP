@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <title>PSP</title>
+    <link rel="stylesheet" href="{% static 'css/Style.css'%} ">
+</head>
+    <body>
+    <h1>Purchase and Sales Summary</h1>
+    <nav class="navbar">
+    <p id="datetime"></p>
+
+        <button class="nav-btn">
+        <a href="Addproducts">ADD PRODUCTS</a>
+    </button>
+
+    <button class="nav-btn" onclick="printTable()">Print</button>
+
+    <button class="nav-btn"
+        onclick="window.open('https://mail.google.com/mail/u/0/?view=cm&fs=1&to=suryabca0@gmail.com&su=Inventory%20Summary&body=Please%20find%20the%20latest%20inventory%20summary%20attached.', '_blank')">Email</button>
+</nav>
+
+
+    <div id="printSection">
+        <table>
+        <thead>
+            <tr>
+                <th>Product id</th>
+                <th>Product Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Category</th>
+                <th>Edit Status</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in inventory %}
+            <tr>
+                <td>{{ data.id }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.description }}</td>
+                <td>{{ data.price }}</td>
+                <td>{{ data.stock_qty }}</td>
+                <td>{{ data.category }}</td>
+                <td class="btn-box"><button><a href="editProduct/{{data.id}}">EDIT</a></button></td>
+                <td class="btn-box"><button><a href="DeleteProduct/{{data.id}}">DELETE</a></button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    <script src="{%static 'js/index.js'%}"></script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PSP</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Update.css' %}">
+</head>
+<body>
+    <h2>Commit Product Modifications</h2>
+    <form method="POST" action = ../updateProduct/{{product.id}}>
+        {% csrf_token %}
+        <label>Product Name</label>
+        <input name="name" value="{{product.name}}"><br>
+        <label>Description</label>
+        <input name="description" value="{{product.description}}"><br>
+        <label>Price</label>
+        <input name="price" value="{{product.price}}"><br>
+        <label>Quantity</label>
+        <input name="stock_qty" value="{{product.stock_qty}}"><br>
+        <label>Category</label>
+        <input name="category" value="{{product.category}}"><br>
+        <button>SUBMIT</button><br>
+    </form>
+</body>
+</html>

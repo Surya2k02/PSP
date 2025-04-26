@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PSP</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/Add.css' %}">
+</head>
+<body>
+    <h2>New Product Entry</h2>
+    <form method ="POST" action="./insertProduct/">
+        {% csrf_token %}
+        <label>Product Name</label>
+        <input name="name"><br>
+        <label>Description</label>
+        <input name="description"><br>
+        <label>Price</label>
+        <input name="price"><br>
+        <label>Quantity</label>
+        <input name="stock_qty"><br>
+        <label>Category</label>
+        <input name="category"><br>
+        <button type="submit">Add Product</button>
+    </form>
+</body>
+</html>
